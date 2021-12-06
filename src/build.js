@@ -5,6 +5,14 @@ import asyncForEach from './asyncForEach.js'
 import runOnImage from './runOnImage.js'
 import replaceTagsIn from './replaceTags.js'
 
+function getTag (tagMeta) {
+    if (typeof tagMeta !== 'string') {
+        return tagMeta.tag
+    } else {
+        return tagMeta
+    }
+}
+
 /**
  *
  * @param {string|{tag: string, docker: object}} tagMeta
@@ -15,12 +23,7 @@ import replaceTagsIn from './replaceTags.js'
 async function buildTag (tagMeta, index, context) {
     // Get tag
     const tagIsObject = typeof tagMeta !== 'string';
-    let tag
-    if (tagIsObject) {
-        tag = tagMeta.tag
-    } else {
-        tag = tagMeta
-    }
+    let tag = getTag(tagMeta)
 
     const imageWithTag = `${context.options.imageName}:${tag}`
     console.log(`   𖤘 `.blue + imageWithTag)
@@ -107,7 +110,8 @@ export default async function build (dockerFileTemplate, options, cli) {
         }
 
         console.log('🐳 Docker files ' + tasks.join(' and '))
-        await asyncForEach(options.tags, async (tag) => {
+        await asyncForEach(options.tags, async (tagObject) => {
+            const tag = getTag(tagObject)
             const imageWithTag = `${options.imageName}:${tag}`
             console.log(`   𖤘 `.blue + imageWithTag)
 
