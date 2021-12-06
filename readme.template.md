@@ -11,7 +11,8 @@
 Create `Dockerfile.template` in your directory.
 
 - This is a base docker file that will be created. Build context is in your root folder.
-- Directory will be created with `tag` name (if missing) and Dockerfile will be created from the template inside the directory.
+- Directory will be created with `tag` name (if missing) and Dockerfile will be created from the template inside the
+  directory.
 - There are several tags that can be used in the template. More in [tags.md](./tags.md).
 
 ### (optional) Create `readme.template.md` in your root directory.
@@ -49,6 +50,36 @@ For easier usage use your package.json as a config to not be required passing im
 
 ```
 
+##### Tags with custom replacement
+
+This feature enables replacing custom variables for each tag version. Instead of string for tag use an object.
+
+```json
+{
+  "tags": [
+    "12",
+    {
+      "tag": "7.4-node-14",
+      "docker": {
+        "php": "7.4",
+        "node": "14",
+        "composer": "v2.1.14"
+      }
+    },
+    {
+      "tag": "7.4-node-10",
+      "docker": {
+        "php": "7.4",
+        "node": "10",
+        "composer": "v2.1.14"
+      }
+    }
+  ]
+}
+```
+
+The `install` will be translated to `--install--` key that will be replaced in your docker template 
+
 ### Commands
 
 > Image name and a list of tags are required if package.json does not exists in your directory.
@@ -78,3 +109,11 @@ You probably need to volume map to /app folder. For CI usage should be fine (not
 ### Docker images (node version, --IMAGE_NAME--)
 
 --TAGS--
+
+## TODO
+
+- Improve docs **feedback wanted**
+- Parallel building
+- Ability to build only readme
+- Custom config file (to not force package.json)
+- Customize file names / directory for templates.

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "description": "CLI tool for generating docker files from a template, building images from it, publishing them and optionally generating a readme file.",
+  "repository": {
+    "url": "https://github.com/wrk-flow/wf-docker",
+    "type": "git"
+  },
   "main": "index.js",
   "engines": {
     "node": ">=14"
