@@ -8,7 +8,7 @@ export default function (options, cli, readmeTags, readmeFilePath) {
 
     // Replace tags in template
     const replace = {
-        '--DESCRIPTION--': cli.pkg.description,
+        '--DESCRIPTION--': options.description,
         '--IMAGE_NAME--': options.imageName,
         '--TAGS--': `Image | Badges\n --- | ---\n${readmeTags}`
     }

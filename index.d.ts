@@ -51,6 +51,8 @@ declare namespace WorkflowDocker {
          * A list of commands to execute on docker image that was processed.
          */
         run: string[] | undefined,
+
+        description: string
     }
 
     interface Tasks {
@@ -107,6 +109,7 @@ declare namespace WorkflowDocker {
     }
 
     interface Package {
-        dockerfile: Package.Dockerfile
+        'wf-docker': Package.Dockerfile,
+        description: string
     }
 }

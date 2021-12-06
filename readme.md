@@ -78,7 +78,7 @@ This feature enables replacing custom variables for each tag version. Instead of
 }
 ```
 
-The `install` will be translated to `--install--` key that will be replaced in your docker template
+The `install` will be translated to `--install--` key that will be replaced in your docker template 
 
 ### Commands
 
@@ -118,6 +118,7 @@ Image | Badges
 **wrkflow/wf-docker:14-alpine** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:14-alpine?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:14-alpine?style=flat-square)
 **wrkflow/wf-docker:16-alpine** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:16-alpine?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:16-alpine?style=flat-square)
 **wrkflow/wf-docker:17-alpine** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:17-alpine?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:17-alpine?style=flat-square)
+
 
 ## TODO
 

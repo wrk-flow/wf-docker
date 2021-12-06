@@ -11,6 +11,7 @@ export default function getOptions (cli, packageJson) {
     let imageName = null
     let tags = null
     let run = []
+    let description = ''
 
     if (cli.input.length === 0) {
         throw new Error('Missing arguments: <command>')
@@ -36,6 +37,10 @@ export default function getOptions (cli, packageJson) {
         }
     }
 
+    if (packageJson && typeof packageJson.description === 'string') {
+        description = packageJson.description;
+    }
+
     if (imageName === null) {
         if (cli.input.length === 1) {
             throw new Error('You need to provide image name. Use first cli argument or update your package.json - wf-build.image')
@@ -52,7 +57,6 @@ export default function getOptions (cli, packageJson) {
         imageName = cli.input.splice(2)
     }
 
-    const hasPackageJson = packageJson !== null
     const command = cli.input[0]
 
     // Support to build or push commands
@@ -63,6 +67,7 @@ export default function getOptions (cli, packageJson) {
             build: command !== 'push',
             push: command !== 'build',
         },
-        run: run
+        run: run,
+        description: description
     }
 }
