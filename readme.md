@@ -83,4 +83,8 @@ Image | Badges
 **wrkflow/wf-docker:14** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:14?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:14?style=flat-square)
 **wrkflow/wf-docker:16** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:16?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:16?style=flat-square)
 **wrkflow/wf-docker:17** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:17?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:17?style=flat-square)
+**wrkflow/wf-docker:12-alpine** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:12-alpine?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:12-alpine?style=flat-square)
+**wrkflow/wf-docker:14-alpine** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:14-alpine?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:14-alpine?style=flat-square)
+**wrkflow/wf-docker:16-alpine** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:16-alpine?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:16-alpine?style=flat-square)
+**wrkflow/wf-docker:17-alpine** | ![](https://img.shields.io/microbadger/layers/wrkflow/wf-docker:17-alpine?style=flat-square) ![](https://img.shields.io/microbadger/image-size/wrkflow/wf-docker:17-alpine?style=flat-square)
 
