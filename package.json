@@ -1,0 +1,46 @@
+{
+  "name": "wf-docker",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CLI tool for generating docker files from a template, building images from it, publishing them and optionally generating a readme file.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=14"
+  },
+  "bin": {
+    "wf-docker": "index.js"
+  },
+  "wf-docker": {
+    "image": "wrkflow/wf-docker",
+    "tags": [
+      "12",
+      "14",
+      "16",
+      "17",
+      "12-alpine",
+      "14-alpine",
+      "16-alpine",
+      "17-alpine"
+    ],
+    "run": [
+      "node --version",
+      "npm --version",
+      "wf-docker --version"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Docker",
+    "CLI"
+  ],
+  "author": "Martin Kluska <martin@kluska.cz>",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "execa": "^6.0.0",
+    "fs-extra": "^10.0.0",
+    "meow": "^10.1.2"
+  }
+}
