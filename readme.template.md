@@ -150,7 +150,3 @@ You probably need to volume map to /app folder. For CI usage should be fine (not
 - [ ] Auto-test build
 - [ ] Append run response to readme
 - [ ] Add ability Dockerfile.template for each tag (like alpine apk vs apt-get)
-
-
-## Contributions
-

@@ -151,7 +151,7 @@ Image | Badges
 
 - [ ] Improve docs **feedback wanted**
 - [ ] Parallel building
-- [x] Ability to build only readme (partialy done)
+- [x] Ability to build only readme (partially done)
 - [x] Custom config file (to not force package.json)
 - [ ] Customize file names / directory for templates.
 - [ ] Base template
@@ -161,3 +161,4 @@ Image | Badges
 - [ ] Unit tests
 - [ ] Auto-test build
 - [ ] Append run response to readme
+- [ ] Add ability Dockerfile.template for each tag (like alpine apk vs apt-get)
