@@ -7,6 +7,12 @@
 
 ![success.png](./success.png)
 
+## Features
+
+- Generate multiple Dockerfiles from a template with variable replace (for version matrix)
+- Build and push all Docker images from single command
+- Generate README file with all available tags from a template
+
 ## Install
 
 ### Locally for the project (package.json is required)
@@ -150,3 +156,8 @@ You probably need to volume map to /app folder. For CI usage should be fine (not
 - [ ] Auto-test build
 - [ ] Append run response to readme
 - [ ] Add ability Dockerfile.template for each tag (like alpine apk vs apt-get)
+
+## Examples
+
+- Multiple PHP versions with different NodeJS and composer version: https://github.com/pionl/docker-php-laravel-ci
+- Multiple NodeJS versions with OpenSSH / Git installed https://github.com/pionl/docker-node-clone-ready 
