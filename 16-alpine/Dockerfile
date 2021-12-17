@@ -1,5 +1,8 @@
 FROM node:16-alpine
 
+
+MAINTAINER Martin Kluska <martin@kluska.cz>
+
 WORKDIR /app
 
 COPY ./src ./src

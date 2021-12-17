@@ -1,5 +1,8 @@
 FROM node:--TAG--
 
+
+MAINTAINER Martin Kluska <martin@kluska.cz>
+
 WORKDIR /app
 
 COPY ./src ./src

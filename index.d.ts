@@ -63,7 +63,11 @@ declare namespace WorkflowDocker {
         /**
          * The image will be pushed.
          */
-        push: boolean
+        push: boolean,
+        /**
+         * We are going to generate readme
+         */
+        generateReadme: boolean
     }
 
     namespace Build {
@@ -87,29 +91,28 @@ declare namespace WorkflowDocker {
         }
     }
 
-    /**
-     * package.json
-     */
-    namespace Package {
-        interface Dockerfile {
-            /**
-             * A list of commands to execute on docker image that was processed.
-             */
-            run: string[] | undefined,
-            /**
-             * Docker image name.
-             */
-            image: string,
+    interface Config {
+        /**
+         * A description for readme.
+         */
+        description: string | undefined
+        /**
+         * A list of commands to execute on docker image that was processed.
+         */
+        run: string[] | undefined,
+        /**
+         * Docker image name.
+         */
+        image: string,
 
-            /**
-             * A list of tags to build (and generate docker file).
-             */
-            tags: string[],
-        }
+        /**
+         * A list of tags to build (and generate docker file).
+         */
+        tags: string[],
     }
 
     interface Package {
-        'wf-docker': Package.Dockerfile,
+        'wf-docker': Config,
         description: string
     }
 }

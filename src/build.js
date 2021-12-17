@@ -73,8 +73,7 @@ async function buildTag (tagMeta, index, context) {
 
     // Generate  readme
     context.readmeTags += `**${imageWithTag}** | ` +
-        `![](https://img.shields.io/microbadger/layers/${imageWithTag}?style=flat-square) ` +
-        `![](https://img.shields.io/microbadger/image-size/${imageWithTag}?style=flat-square)\n`
+        `![](https://img.shields.io/docker/image-size/${context.options.imageName}/${tag}?style=flat-square)\n`
 }
 
 /**
@@ -87,6 +86,25 @@ async function buildTag (tagMeta, index, context) {
  * @return {Promise<string>}
  */
 export default async function build (dockerFileTemplate, options, cli) {
+    const tasks = [
+        'generating docker files'
+    ]
+
+    if (options.tasks.build) {
+        tasks.push('building')
+    }
+
+    if (options.tasks.push) {
+        tasks.push('pushing')
+    }
+
+    if (options.tasks.generateReadme) {
+        tasks.push('generating readme')
+    }
+
+    console.log('🐳 Workflow docker running (' + tasks.join(', ') + ') for tags')
+
+
     /**
      * @var {WorkflowDocker.Build.Context} context
      */
@@ -98,26 +116,13 @@ export default async function build (dockerFileTemplate, options, cli) {
     })
 
     // If we are using verbose mode, the log can be long, lets recap what tags where processed.
-    if (cli.flags.verbose) {
-        const tasks = []
-
-        if (options.tasks.build) {
-            tasks.push('built')
-        }
-
-        if (options.tasks.push) {
-            tasks.push('pushed')
-        }
-
-        console.log('🐳 Docker files ' + tasks.join(' and '))
+    if (cli.flags.verbose === true && options.tasks.build === true) {
         await asyncForEach(options.tags, async (tagObject) => {
             const tag = getTag(tagObject)
             const imageWithTag = `${options.imageName}:${tag}`
             console.log(`   𖤘 `.blue + imageWithTag)
 
-            if (options.tasks.build) {
-                await runOnImage(imageWithTag, options.run)
-            }
+            await runOnImage(imageWithTag, options.run)
         })
     }
 

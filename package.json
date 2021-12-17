@@ -1,6 +1,6 @@
 {
   "name": "wf-docker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "CLI tool for generating docker files from a template, building images from it, publishing them and optionally generating a readme file.",
   "repository": {

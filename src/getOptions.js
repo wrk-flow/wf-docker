@@ -1,13 +1,14 @@
+const usageDescription = ', config file or update your package.json'
+
 /**
  * Builds the options from the cli and package objects.
  *
  * @param {WorkflowDocker.Cli} cli
- * @param {WorkflowDocker.Package} packageJson
+ * @param {WorkflowDocker.Config|null} dockerConfig
  * @return {WorkflowDocker.Options}
  */
-export default function getOptions (cli, packageJson) {
+export default function getOptions (cli, dockerConfig) {
     // Validate arguments
-    const dockerConfig = packageJson && packageJson['wf-docker']
     let imageName = null
     let tags = null
     let run = []
@@ -17,11 +18,13 @@ export default function getOptions (cli, packageJson) {
         throw new Error('Missing arguments: <command>')
     }
 
-    if (['push', 'build', 'build-push'].includes(cli.input[0]) === false) {
+    if (['push', 'build', 'build-push', 'generate-readme'].includes(cli.input[0]) === false) {
         throw new Error('Unknown command')
     }
 
     if (typeof dockerConfig === 'object' && dockerConfig !== null) {
+        description = dockerConfig.description || ''
+
         if (typeof dockerConfig.image === 'string') {
             imageName = dockerConfig.image
         }
@@ -37,13 +40,10 @@ export default function getOptions (cli, packageJson) {
         }
     }
 
-    if (packageJson && typeof packageJson.description === 'string') {
-        description = packageJson.description;
-    }
-
     if (imageName === null) {
         if (cli.input.length === 1) {
-            throw new Error('You need to provide image name. Use first cli argument or update your package.json - wf-build.image')
+
+            throw new Error('You need to provide image name. Use first cli argument' + usageDescription + ' - wf-docker.image')
         }
 
         imageName = cli.input[1]
@@ -51,22 +51,25 @@ export default function getOptions (cli, packageJson) {
 
     if (imageName === null) {
         if (cli.input.length === 2) {
-            throw new Error('You need to provide image tags to create. Pass tags after image name in CLI or update your package.json - wf-build.tags (array)')
+            throw new Error('You need to provide image tags to create. Pass tags after image name in CLI' + usageDescription + ' - wf-docker.tags (array)')
         }
 
         imageName = cli.input.splice(2)
     }
 
-    const command = cli.input[0]
+    const command = cli.input[0];
 
     // Support to build or push commands
+    const tasks = {
+        build: command.includes('build'),
+        push: command.includes('push'),
+        generateReadme: true, // At this moment we are going to always generate readme
+    };
+
     return {
         imageName: imageName,
         tags: tags,
-        tasks: {
-            build: command !== 'push',
-            push: command !== 'build',
-        },
+        tasks: tasks,
         run: run,
         description: description
     }
